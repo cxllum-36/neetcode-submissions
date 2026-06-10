@@ -1,0 +1,22 @@
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        nums.sort()
+        left=0
+        cons=0
+        curr=0
+        right=1
+        if len(nums)==0:
+            return cons
+        while  right < len(nums):
+            if nums[right]-nums[right-1]==1:
+                curr+=1
+                right+=1
+                if curr > cons:
+                    cons = curr
+            elif nums[right]-nums[right-1]==0:
+                right+=1
+            else:
+                left=right
+                right+=1
+                curr=0
+        return cons +1
